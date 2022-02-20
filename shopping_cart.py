@@ -1,5 +1,8 @@
 # shopping_cart.py
 
+from ast import For
+
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -52,15 +55,16 @@ while True:
         selected_ids.append(selected_id)
 
 ## Information Display / Output
-For selected_id in selected_ids
+for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
-    total_price = total_price + matching_products["price"]
+    total_price = total_price + matching_product["price"]
     print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
 
-print("TOTAL PRICE" + str(total_price))
 
 # Checkpoint 2: Look-up Products
 # Checkpoint 3: Printing the Receipt
+print("TOTAL PRICE " + str(total_price))
+
 
 
