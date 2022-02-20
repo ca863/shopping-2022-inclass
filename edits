@@ -80,7 +80,19 @@ for selected_id in selected_ids:
 
 # Checkpoint 2: Look-up Products
 # Checkpoint 3: Printing the Receipt
-print("TOTAL PRICE " + to_usd(total_price))
+
+subtotal = total_price
+tax = total_price*0.06
+TOTAL = subtotal+tax
+print("----------------------------")
+print("SUBTOTAL: " + to_usd(subtotal))
+print("TAX: " + to_usd(tax))
+print("TOTAL: " + to_usd(TOTAL))
+print("----------------------------")
+print("THANKS, SEE YOU AGAIN!")
+print("----------------------------")
+
+
 
 
 
