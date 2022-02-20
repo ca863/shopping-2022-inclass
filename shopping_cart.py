@@ -37,6 +37,18 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 
-# TODO: write some Python code here to produce the desired output
+# CHECKPOINT 1: CAPTURING USER INPUTS
+
+## Information Capture / Input
+Selected_id = input("Please input a product indentifier:")
+print(Selected_id)
+print(type(Selected_id))
+
+## Information Display / Output
+
+
+
+# Checkpoint 2: Look-up Products
+# Checkpoint 3: Printing the Receipt
 
 print(products)
