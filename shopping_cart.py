@@ -40,9 +40,10 @@ def to_usd(my_price):
 # CHECKPOINT 1: CAPTURING USER INPUTS
 
 ## Information Capture / Input
-Selected_id = input("Please input a product indentifier:")
-print(Selected_id)
-print(type(Selected_id))
+selected_id = input("Please input a product indentifier:")
+matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+matching_product = matching_products[0]
+print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 ## Information Display / Output
 
@@ -51,4 +52,4 @@ print(type(Selected_id))
 # Checkpoint 2: Look-up Products
 # Checkpoint 3: Printing the Receipt
 
-print(products)
+
