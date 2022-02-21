@@ -1,5 +1,7 @@
 # shopping_cart.py
 
+print("When all products are scanned please type 'DONE'")
+
 from ast import For, NotIn
 
 
