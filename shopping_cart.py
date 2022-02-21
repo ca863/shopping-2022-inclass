@@ -1,6 +1,6 @@
 # shopping_cart.py
 
-from ast import For
+from ast import For, NotIn
 
 
 products = [
@@ -41,30 +41,59 @@ def to_usd(my_price):
 
 
 # CHECKPOINT 1: CAPTURING USER INPUTS
-
-## Information Capture / Input
-
 total_price = 0
 selected_ids = []
+possible_identifiers = []
 
+for x in products:
+    if x["id"] not in possible_identifiers:
+        possible_identifiers.append(x["id"])
+
+#converting the possible identifiers from str to int
+possible_identifiers_string = [str(x) for x in possible_identifiers]
+
+# CHECKPOINT 2: LOOK-UP PRODUCTS
 while True:
-    selected_id = input("Please input a product indentifier:")
+    selected_id = input("Please input a product identifier:")
     if selected_id.upper() == "DONE":
         break
     else:
-        selected_ids.append(selected_id)
+        if selected_id not in possible_identifiers_string:
+            print("Hey, are you sure that product identifier is correct? Please try again!")
+        else:
+            selected_ids.append(selected_id)
+
+        
+#Printing the name of the grocery store 
+print("----------------------------")
+print("CARMEN'S GROCERY STORE")
+print("WWW.CARMENS-GROCERY-STORE.COM")
+print("----------------------------")
+
+#Printing Checkout Time & Date
+import datetime as dt
+from datetime import datetime
+current_date = dt.date.today()
+print("CHECKOUT AT:",current_date,datetime.today().strftime("%I:%M %p"))
+print("----------------------------")
+
 
 ## Information Display / Output
+print("SELECTED PRODUCTS:")
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
-    print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+    print("... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"])+")")
 
-
-# Checkpoint 2: Look-up Products
-# Checkpoint 3: Printing the Receipt
-print("TOTAL PRICE " + str(total_price))
-
-
-
+# CHECKPOINT 3: PRINTING THE RECEIPT
+subtotal = total_price
+tax = total_price*0.06
+TOTAL = subtotal+tax
+print("----------------------------")
+print("SUBTOTAL: " + to_usd(subtotal))
+print("TAX: " + to_usd(tax))
+print("TOTAL: " + to_usd(TOTAL))
+print("----------------------------")
+print("THANKS, SEE YOU AGAIN!")
+print("----------------------------")
