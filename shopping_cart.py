@@ -49,7 +49,7 @@ selected_ids = []
 
 while True:
     selected_id = input("Please input a product indentifier:")
-    if selected_id == "DONE":
+    if selected_id.upper() == "DONE":
         break
     else:
         selected_ids.append(selected_id)

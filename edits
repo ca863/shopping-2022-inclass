@@ -1,6 +1,6 @@
 # shopping_cart.py
 
-from ast import For
+from ast import For, NotIn
 
 
 products = [
@@ -47,14 +47,26 @@ def to_usd(my_price):
 
 total_price = 0
 selected_ids = []
+possible_identifiers = []
+
+for x in products:
+    if x["id"] not in possible_identifiers:
+        possible_identifiers.append(x["id"])
+
+#converting the possible identifiers from str to int
+possible_identifiers_string = [str(x) for x in possible_identifiers]
 
 while True:
-    selected_id = input("Please input a product indentifier:")
-    if selected_id == "DONE":
+    selected_id = input("Please input a product identifier:")
+    if selected_id.upper() == "DONE":
         break
     else:
-        selected_ids.append(selected_id)
+        if selected_id not in possible_identifiers_string:
+            print("Hey, are you sure that product identifier is correct? Please try again!")
+        else:
+            selected_ids.append(selected_id)
 
+        
 #Printing the name of the grocery store 
 print("----------------------------")
 print("CARMEN'S GROCERY STORE")
